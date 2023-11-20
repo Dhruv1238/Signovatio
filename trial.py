@@ -40,6 +40,10 @@ def run_app():
 
         ret, frame = cap.read()
 
+        if frame is None:
+            st.error("Failed to read frame from webcam. Please check your webcam connection.")
+            return
+
         H, W, _ = frame.shape
 
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
